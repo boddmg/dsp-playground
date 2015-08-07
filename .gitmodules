@@ -1,0 +1,6 @@
+[submodule "rigol_usbtmc"]
+	path = rigol_usbtmc
+	url = https://github.com/AIMAtlanta/Rigol_USBTMC.git
+[submodule "rigol"]
+	path = rigol
+	url = https://github.com/mtcomb/rigol.git
