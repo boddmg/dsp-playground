@@ -2,17 +2,20 @@ import numpy
 import matplotlib.pyplot as plot
 from time import sleep
 from rigol_usbtmc import rigol_usbtmc
+import pickle
 
 def main():
     scope = rigol_usbtmc.Scope()
     # scope.timescale = 0.01
-    scope.auto()
-    scope.run()
+    # scope.auto()
+    # scope.run()
     # sleep(3)
 
-    data = scope.ch1.data
+    # data = scope.ch1.data
 
-    data_size = len(scope.ch1.data)
+    data = numpy.load("data.pkl")
+
+    data_size = len(data)
 
     # get metadata
     sample_rate = float(scope.ask(':ACQ:SAMP?'))
@@ -20,6 +23,15 @@ def main():
     timeoffset = float(scope.ask(":TIM:OFFS?"))
     voltscale = float(scope.ask(':CHAN1:SCAL?'))
     voltoffset = float(scope.ask(":CHAN1:OFFS?"))
+
+    meta_data = {
+        "sample_rate":sample_rate,
+        "timescale":timescale,
+        "timeoffset":timeoffset,
+        "voltscale":voltscale,
+        "voltoffset":voltoffset
+    }
+    pickle.dump(meta_data,open("meta_data.pkl",'wb'))
 
     # show metadata
     print("Data size:      ", data_size)
