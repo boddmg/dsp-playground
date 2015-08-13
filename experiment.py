@@ -31,20 +31,8 @@ print(DF)
 filter_buffer = []
 
 def single_filter(x):
-    if len(filter_buffer)<FILTER_SAMPLE_PURE:
-        filter_buffer.append(x)
-        return x
-    else:
-        filter_buffer.pop(0)
-        filter_buffer.append(x)
-        add_zero_data = np.array(filter_buffer + [0] * (FILTER_SAMPLE_ALL - FILTER_SAMPLE_PURE))
-        fft = np.fft.fft(add_zero_data)
-        fft_mag = np.abs(fft)
-        max_fft_mag = max(fft_mag[48.0/DF:52.0/DF])
-        max_fft_mag_index = np.where(fft_mag == max_fft_mag)[0][0]
-        phase = np.angle(fft[max_fft_mag_index])
-        print(phase)
-        return np.sin(np.pi * 2 * max_fft_mag_index * DF + phase) *500
+
+    return x
 
 
 
