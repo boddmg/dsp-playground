@@ -9,8 +9,8 @@
  * ==================================================================== 
  */
 
-#ifndef __iir_SOS_DIRECT_IIR_II_T_H__
-#define __iir_SOS_DIRECT_IIR_II_T_H__
+#ifndef __iir_DIRECT_FIR_H__
+#define __iir_DIRECT_FIR_H__
 
 #include <stdio.h>
 #include <math.h>
@@ -23,7 +23,7 @@ extern "C"{
 #endif
 
 /* ----Typedef---- */
-typedef I32* iir_State;
+typedef I16* iir_State;
 
 /* ----Create/Dispose State---- */
 iir_State iir_CreateState ( );
@@ -72,4 +72,4 @@ I16 iir_Filtering (I16 sampleIn, iir_State state);
 }
 #endif
 
-#endif //#ifndef __iir_SOS_DIRECT_IIR_II_T_H__
+#endif //#ifndef __iir_DIRECT_FIR_H__
